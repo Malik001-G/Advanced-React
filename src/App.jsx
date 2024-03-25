@@ -1,9 +1,8 @@
-import Example from "./tutorial/04-project-structure/starter/Example";
-
+import Starter from "./tutorial/07-useRef/starter/01-useRef-basics";
 function App() {
   return (
     <div className="container">
-     <Example/>
+      <Starter />
     </div>
   );
 }
