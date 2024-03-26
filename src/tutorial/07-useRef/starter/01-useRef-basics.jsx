@@ -3,10 +3,17 @@ import { useEffect, useRef, useState } from "react";
 const UseRefBasics = () => {
   const [value, setValue] = useState(0);
   const refContainer = useRef(null);
-
-  // useEffect(() => {
-  //   console.log(refCOntainer);
-  // })
+  const isMounted = useRef(false);
+  useEffect(() => {
+  refContainer.current.focus()
+} )
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+    console.log("re-render");
+  }, [value]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = refContainer.current.value;
@@ -20,7 +27,12 @@ const UseRefBasics = () => {
           <label htmlFor="name" className="form-label">
             Name
           </label>
-          <input type="text" id="name" className="form-input" ref={refContainer} />
+          <input
+            type="text"
+            id="name"
+            className="form-input"
+            ref={refContainer}
+          />
         </div>
         <button type="submit" className="btn btn-block">
           submit
